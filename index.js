@@ -25,6 +25,7 @@ const ta03Routes = require('./routes/ta03');
 const ta04Routes = require('./routes/ta04');
 
 app
+  .use(session({style:'',counter:''})
   .use(express.static(path.join(__dirname, 'public')))
   .set('views', path.join(__dirname, 'views'))
   .set('view engine', 'ejs')
