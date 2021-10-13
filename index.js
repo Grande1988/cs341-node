@@ -50,4 +50,4 @@ app
     // 404 page
     res.render('pages/404', { title: '404 - Page Not Found', path: req.url });
   })
-  .listen(PORT, () => console.log(`Listening on ${PORT}`));
+  .listen(PORT, () => console.log(`Listening on ${PORT}`)))
