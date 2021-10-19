@@ -18,12 +18,14 @@
     "express-handlebars": "^3.0.2",
     "express-session": "^1.17.2",
     "mongoose": "^6.0.11",
-    "nodemon": "^2.0.12",
+    "nodemailer": "^6.7.0",
+    "nodemailer-sendgrid-transport": "^0.2.0",
     "path": "^0.12.7",
     "pug": "^3.0.2",
     "user": "^0.0.0"
   },
   "devDependencies": {
+    "nodemon": "^2.0.13",
     "request": "^2.81.0",
     "tape": "^4.7.0"
   },
