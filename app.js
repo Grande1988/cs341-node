@@ -5,8 +5,7 @@ const session = require("express-session");
 const MongoDBStore = require("connect-mongodb-session")(session);
 const errorController = require("./controllers/error");
 const User = require("./models/user");
-const MONGODB_URI =
-  "mongodb+srv://reddgl:Grande!1988@cluster0.sll31.mongodb.net/myFirstDatabase?retryWrites=true&w=majority";
+const mongoConnect = require('./util/database')
 const app = express();
 const store = new MongoDBStore({
   uri: MONGODB_URI,
@@ -57,23 +56,7 @@ app.use(authRoutes);
 
 app.use(errorController.get404);
 
-mongoose
-  .connect(MONGODB_URI)
-  .then((result) => {
-    User.findOne().then((user) => {
-      if (!user) {
-        const user = new User({
-          name: "LeGrand",
-          email: "LeGrand@test.com",
-          cart: {
-            items: [],
-          },
-        });
-        user.save();
-      }
-    });
-    app.listen(3000);
-  })
-  .catch((err) => {
-    console.log(err);
-  });
+mongoConnect((client) => {
+  console.log(client);
+  app.listen(3000);
+});
