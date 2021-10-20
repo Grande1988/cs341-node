@@ -1,4 +1,4 @@
-const mongoConnect = require('../util/datavase');
+const getDb = require('../util/datavase').getDb;
 const Schema = mongoose.Schema;
 const productSchema = new Schema({
   title: {

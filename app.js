@@ -5,7 +5,7 @@ const session = require("express-session");
 const MongoDBStore = require("connect-mongodb-session")(session);
 const errorController = require("./controllers/error");
 const User = require("./models/user");
-const mongoConnect = require('./util/database')
+const mongoConnect = require('./util/database').mongoConnect;
 const app = express();
 const store = new MongoDBStore({
   uri: MONGODB_URI,
@@ -56,7 +56,6 @@ app.use(authRoutes);
 
 app.use(errorController.get404);
 
-mongoConnect((client) => {
-  console.log(client);
-  app.listen(3000);
+mongoConnect(() => {
+  app.listen(5000);
 });
